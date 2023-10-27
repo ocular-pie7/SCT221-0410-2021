@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <title>Local Storage</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0 auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #ccc;
+    }
+
+    #visitCount {
+      margin-top: 20px;
+    }
+
+    button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      width: 800px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body onload="initialize()">
+
+  <div class="container">
+
+    <table class="position">
+      <tr>
+ <th rowspan="2"><img src="passport.jpg" alt="passport" width="auto" height="100"></th>
+
+        <th>NAME:</th>
+        <td>Mwania Emmanuel Katunga</td>
+      </tr>
+      <tr>
+        <th class="space">REG NO:</th>
+        <td>SCT221-0410/2021</td>
+      </tr>
+    </table>
+
+    <table border="1">
+      <tr>
+        <th>UNIT NAME</th>
+        <th>UNIT CODE</th>
+      </tr>
+      <tr>
+        <td>Web Application Developmennt</td>
+        <td>BIT2207</td>
+      </tr>
+      <tr>
+        <td>Calculus</td>
+        <td>SMA2100</td>
+      </tr>
+      <tr>
+        <td>Data Structures and Algorithmn</td>
+        <td>BIT2203</td>
+      </tr>
+    </table>
+
+    <div id="visitCount"></div>
+    <button type="button" onclick="removeCount()">Remove</button>
+    <button type="button" onclick="clearAll()">Clear all</button>
+
+  </div>
+
+</body>
+</html>
