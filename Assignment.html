@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>Local Storage</title>
+
+    <script type="text/javascript">
+        
+        const localStorage = window.localStorage;
+        const initialize = () => {
+        if (localStorage) {
+        const count = localStorage.getItem("visitCount") || 0;
+        const newCount = parseInt(count) + 1;
+        localStorage.setItem("visitCount", newCount);
+        }
+        updateDOM();
+        };
+        const updateDOM = () => {
+        const count = localStorage.getItem("visitCount") || 0;
+        const storedPreferences = localStorage.getItem("preference");
+        const preference = storedPreferences
+        ? JSON.parse(storedPreferences)
+        : {};
+        document.getElementById(
+        "visitCount"
+        ).innerHTML = Visit count ${count};
+        document.body.style.background = preference.color || "white";
+       
+    };
+        const setColorPreference = color => {
+        const localStorage = window.localStorage;
+        const preference = { color }
+        localStorage.setItem("preference", JSON.stringify(preference));
+        updateDOM();
+        };
+
+        const removeCount = () => {
+ localStorage.removeItem("visitCount");
+ updateDOM();
+};
+const clearAll = () => {
+ localStorage.clear();
+ updateDOM();
+};
+const showAllStoredKeyValues = () => {
+ console.log(we have ${localStorage.length} values);
+ const ul = document.getElementById("storedItems");
+ ul.innerHTML = "";
+ for (let index = 0; index < localStorage.length; index++) {
+ const key = localStorage.key(index);
+ var li = document.createElement("li");
+ li.appendChild(
+ document.createTextNode(${key} = ${localStorage.getItem(key)})
+ );
+ ul.appendChild(li);
+ showAllStoredKeyValues();
+ }
+ };
+ 
+
+        </script>
+</head>
+
+<body onload="initialize()">
+   
+  <table class="position">
+    <tr>
+        <th rowspan="2"><img src="passport.jpg" alt="passport" width="auto" height="200"></th>
+
+        <th>NAME:</th>
+        <td>Mwania Emmanuel Katunga</td>
+    </tr>
+    <tr>
+        <th class="space">REG NO:</th>
+        <td>SCT221-0410/2021</td>
+    </tr>
+    
+</table>
+<table border="1">
+    <tr>
+        <th>UNIT NAME</th>
+        <th>UNIT CODE</th>
+    </tr>
+    <tr>
+        <td>Web Application Developmennt</td>
+        <td>BIT2207</td>
+    </tr>
+    <tr>
+        <td>Calculus</td>
+        <td>SMA2100</td>
+    </tr>
+    <tr>
+        <td>Data Structures and Algorithmn</td>
+        <td>BIT2203</td>
+    </tr>
+</table>
+
+
+<div id="visitCount"></div>
+<button type="button" onclick="removeCount()">Remove</button>
+<button type="button" onclick="clearAll()">Clear all</button>
+
+</body>
+</html>
